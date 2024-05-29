@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+    <!--Sessão de cadastro-->
+
+    <section class="formCad">
+        <h2>Preencha suas informações:</h2>
+        <!--formulario de cadastro-->
+        <form  action="/cadastrarUsuario" method="POST">
+            <label name="nome">Nome: </label>
+            <input type="text" name="txtNome" id="name"><br><br>
+
+            <label name="endereco">E-mail: </label>
+            <input type="text" name="txtMail" id="mail"><br><br>
+
+            <label name="telefone">Telefone: </label>
+            <input type="text" name="txtTel" id="tel"><br><br>
+
+            <label name="senha">Senha: </label>
+            <input type="text" name="txtSenha" id="passwd"><br><br>
+
+            <button class="botaoConfirmar" type="submit" onclick="">Confirmar</button><br>
+        </form>
+
+        <!--link para voltar à pagina anterior-->
+        <br><a class="linkVoltar" href='/cadastro'>Voltar</a>
+    </section>
+
+
+
+
+{% endblock %}

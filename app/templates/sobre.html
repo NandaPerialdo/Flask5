@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+    <h2>Quem Somos Nós</h2>
+
+    <p id="sobre">
+        "Em uma rua tranquila, no coração da cidade, ergue-se a Joalheria Aurora, um verdadeiro santuário de beleza e
+        elegância. Fundada há mais de meio século por uma família de ourives apaixonados, a história da Aurora é tecida
+        com fios de tradição e inovação. Cada gema, cuidadosamente selecionada, e cada peça, habilmente trabalhada,
+        refletem não apenas a maestria artesanal, mas também o compromisso de criar joias que transcendem o tempo,
+        capturando a essência da sofisticação." <br><br>
+
+
+        "De geração em geração, a Joalheria Aurora tornou-se um destino de prestígio para os amantes de joias em busca
+        de algo verdadeiramente especial. Seus salões exalam um aroma de luxo discreto, onde clientes se tornam parte de
+        uma história que se desenrola em cada brilho e cada detalhe. Na Aurora, cada visita é uma jornada encantada pelo
+        mundo da elegância, onde as joias não apenas adornam, mas também contam histórias de amor, sucesso e momentos
+        preciosos."
+    </p>
+
+    <section id="catalogoSobre" class="pagSobre">
+            <img id="img6" src="{{url_for('static', filename='imagens/imagem6.jpg')}}">
+            <img id="img7" src="{{url_for('static', filename='imagens/imagem7.jpg')}}">
+            <img id="img8" src="{{url_for('static', filename='imagens/imagem8.jpg')}}">
+            <img id="img9" src="{{url_for('static', filename='imagens/imagem9.jpg')}}">
+    </section>
+
+
+{% endblock %}

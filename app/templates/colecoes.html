@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+    <h2>Conheça Nossas Coleções!</h2>
+
+    <section id="colecoes" class="galeria">
+        <article id="gd1">
+            <img id="img4" src="{{url_for('static', filename='imagens/imagem4.jpg')}}">
+            <a href="" class="botao">Adulto</a>
+        </article>
+
+        <article id="gd2">
+            <img id="img5" src="{{url_for('static', filename='imagens/imagem5.jpg')}}">
+            <a href="" class="botao">Infantil</a>
+        </article>
+    </section>
+
+{% endblock %}

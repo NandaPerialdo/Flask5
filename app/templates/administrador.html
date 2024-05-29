@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Acesso Administrador</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/estilo.css')}}">
+</head>
+<body>
+    <section id="menu">
+        <!--menu do administrador-->
+        <h2>Menu do Administrador</h2>
+        <!--chamando metodos que fazem o crud-->
+        <a class="botaoMenu" href="/listar">Consultar Todos Cadastros</a><br><br>
+        <a class="botaoMenu" href="/listarIndividual">Consulta Individual</a><br><br>
+        <a class="botaoMenu" href="/atualizar">Atualizar Cadastro</a><br><br>
+        <a class="botaoMenu" href="/excluir">Excluir Cadastro</a><br><br>
+    </section>
+</body>
+</html>

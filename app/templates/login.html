@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+    <!--Sessão de login-->
+    <section class="formLogin">
+        <h2>Preencha suas informações:</h2>
+        <!--formulario de login-->
+        <form action="/logar" method="POST">
+            <label name="loginEmail">E-mail: </label>
+            <input type="text" name="txtLoginMail" id="logMail"><br><br>
+
+            <label name="loginSenha">Senha: </label>
+            <input type="text" name="txtLoginSenha" id="logPasswd"><br><br>
+
+            <button class="botaoEntrar" type="submit" onclick="">Entrar</button>
+        </form>
+
+        <!--link para voltar à pagina anterior-->
+        <br><a class="linkVoltarLogin" href='/cadastro'>Voltar</a><br><br>
+
+        <!--caminhos possiveis-->
+        <a href="/administrador">Acesso Administrador</a><br>
+        <a href="/usuario">Acesso Usuário</a>
+    </section>
+
+
+{% endblock %}

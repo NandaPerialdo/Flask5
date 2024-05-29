@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+    <h2>Fale Conosco!</h2>
+
+    <!--formulario de contato-->
+    <form>
+        <label name="endereco">Seu E-mail: </label>
+        <input type="text" name="txtMail" id="mail"><br><br>
+    </form>
+
+    <p>Sua Mensagem:</p>
+    <textArea id="mensagem" rows="15" cols="40"></textArea>
+    <button type="submit" onclick="">Enviar</button>
+
+
+{% endblock %}
