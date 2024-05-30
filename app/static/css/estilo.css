@@ -269,3 +269,21 @@ li:hover{
     text-align: center;
     padding-top: 200px;
 }
+
+/*Pagina Erro de Login*/
+
+#erroLogin{
+    text-align: center;
+    padding-top: 200px;
+}
+
+.botaoTentarNovamente{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 15px;
+    color: #fff;
+    background-color: #BC8F8F;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+}

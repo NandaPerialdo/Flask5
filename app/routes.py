@@ -3,6 +3,7 @@ from flask import render_template
 from flask import request
 import json
 import requests
+import this
 link = "https://ti18n-f62da-default-rtdb.firebaseio.com/" #conecta o banco de dados
 
 @app.route('/')
@@ -68,19 +69,21 @@ def entrar():
     senha = request.form.get("txtLoginSenha")
     requisicao = requests.get(f'{link}/cadastrar/.json')  # solicitar os dados
     dicionario = requisicao.json()
-    usuario = ''
+    idAdmin = "admin" #usuario administrador
+    senhaAdmin = "admin" #senha do administrador
     try:
             for codigo in dicionario:
                 usuario = dicionario[codigo]['email']
                 sen     = dicionario[codigo]['senha']
+                if (usuario == idAdmin and sen == senhaAdmin):
+                    return render_template('administrador.html')
                 if (usuario == email and sen == senha):
-                    return usuario
-
-            return 'erro'
+                    return render_template('usuario.html')
+            return render_template('erroLogin.html')
     except Exception as e:
             return f'Ocorreu um erro\n\n {e}'
 
-
+#listar todos os dados
 @app.route('/listar')
 def listarTudo():
     try:
@@ -90,35 +93,62 @@ def listarTudo():
     except Exception as e:
         return f'Ocorreu um erro\n\n + {e}'
 
-@app.route('/listarIndividual')
-def listarIndividual():
-    requisicao = requests.get(f'{link}/cadastrar/.json')
+#listar individual, pesquisando pelo email no banco ded dados
+@app.route('/listarIndividual', methods=['POST'])
+def listarInd():
+    email = request.form.get("txtPesquisaMail")
+    requisicao = requests.get(f'{link}/cadastrar/.json')  # solicitar os dados
     dicionario = requisicao.json()
-    idCadastro = ""
     try:
-        for codigo in dicionario:
-                usuario = dicionario[codigo]['nome']
-                if(usuario == 'teste'):
-                    idCadastro = codigo
-                return idCadastro
+            for codigo in dicionario:
+                usuario = dicionario[codigo]['email']
+                if (usuario == email):
+                    return dicionario[codigo]#validado
+
+            return "email nao encontrado"
     except Exception as e:
-            return f'Algo deu errado!\n\n + {e}'
+            return f'Ocorreu um erro\n\n {e}'
 
-    # -NySO_S4fUqHm7Esx0zn
+#@app.route('/listarIndividual')
+#def listarIndividual():
+    #requisicao = requests.get(f'{link}/cadastrar/.json')
+    #dicionario = requisicao.json()
+    #idCadastro = ""
+    #try:
+        #for codigo in dicionario:
+                #usuario = dicionario[codigo]['nome']
+                #if(usuario == 'teste'):
+                    #idCadastro = codigo
+                #return idCadastro
+    #except Exception as e:
+            #return f'Algo deu errado!\n\n + {e}'
 
+#atualizar os dados
 @app.route('/atualizar')
 def atualizar():
+    nome = request.form.get("txtUpNome")
+    email = request.form.get("txtUpMail")
+    telefone = request.form.get("txtUpTel")
     try:
-        dados = {"email":"fefe@gmail.com"}#parametro para atualizaçao
-        requisicao = requests.patch(f'{link}/cadastrar/-NySO_S4fUqHm7Esx0zn/.json', data=json.dumps(dados))
+        dados = {"nome": nome, "telefone": telefone}#parametro para atualizaçao
+        requisicao = requests.patch(f'{link}/cadastrar/{email}/.json', data=json.dumps(dados))
         return"Atualizado com sucesso!"
     except Exception as e:
         return f'Houve um erro!\n\n + {e}'
 
+#@app.route('/atualizar')
+#def atualizar():
+    #try:
+        #dados = {"email":"fefe@gmail.com"}#parametro para atualizaçao
+        #requisicao = requests.patch(f'{link}/cadastrar/-NySO_S4fUqHm7Esx0zn/.json', data=json.dumps(dados))
+        #return"Atualizado com sucesso!"
+    #except Exception as e:
+        #return f'Houve um erro!\n\n + {e}'
+
 @app.route('/excluir')
 def excluir():
     try:
-        requisicao =requests.delete(f'{link}/cadastrar/-NySO_S4fUqHm7Esx0zn/.json')
+        requisicao = requests.delete(f'{link}/cadastrar/-NySO_S4fUqHm7Esx0zn/.json')
         return "Excluido com sucesso!"
     except Exception as e:
         return f'Houve um erro!\n\n + {e}'

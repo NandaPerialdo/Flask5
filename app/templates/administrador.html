@@ -6,13 +6,40 @@
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/estilo.css')}}">
 </head>
 <body>
+    <!--menu do administrador-->
     <section id="menu">
-        <!--menu do administrador-->
         <h2>Menu do Administrador</h2>
-        <!--chamando metodos que fazem o crud-->
+
+        <!--metodo para listar todos os cadastros-->
         <a class="botaoMenu" href="/listar">Consultar Todos Cadastros</a><br><br>
-        <a class="botaoMenu" href="/listarIndividual">Consulta Individual</a><br><br>
-        <a class="botaoMenu" href="/atualizar">Atualizar Cadastro</a><br><br>
+
+        <!--metodo para listar cadastros individuais a partir do email-->
+        <h3>Listar Individual</h3>
+
+        <form action="/listarIndividual" method="POST">
+            <label name="listar">Insira o E-mail que deseja pesquisar: </label>
+            <input type="text" name="txtPesquisaMail" id="pesquisaMail"><br><br>
+
+            <button class="botaoPesquisa" type="submit" onclick="">Listar</button>
+        </form><br>
+
+        <!--metodo para atualizar os dados-->
+        <h3>Atualizar Dados</h3>
+
+        <form action="/atualizar" method="POST">
+            <label name="upEmail">Qual o email do usuario?: </label>
+            <input type="text" name="txtUpMail" id="upMail"><br><br>
+
+            <label name="upNome">Novo nome: </label>
+            <input type="text" name="txtUpName" id="upName"><br><br>
+
+            <label name="upTelefone">Novo telefone: </label>
+            <input type="text" name="txtUpTel" id="upTel"><br><br>
+
+            <button class="botaoAtualiza" type="submit" onclick="">Atualizar</button>
+        </form><br>
+
+        <!--metodo para excluir os dados-->
         <a class="botaoMenu" href="/excluir">Excluir Cadastro</a><br><br>
     </section>
 </body>
